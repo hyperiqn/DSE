@@ -1,0 +1,24 @@
+insert into PAY_CHECK_2
+values(100,to_date('01-12-2020','DD-MM-YYYY'),2000,NULL,NULL,NULL,2500,5000);
+
+insert into PAY_CHECK_2
+values(101,to_date('01-12-2020','DD-MM-YYYY'),3000,NULL,NULL,NULL,5000,7000);
+
+insert into PAY_CHECK_2
+values(102,to_date('01-12-2020','DD-MM-YYYY'),3000,NULL,NULL,NULL,3600,7000);
+
+insert into PAY_CHECK_2
+values(100,to_date('01-01-2021','DD-MM-YYYY'),3000,NULL,NULL,NULL,450,4000);
+
+insert into PAY_CHECK_2
+values(101,to_date('01-01-2021','DD-MM-YYYY'),5000,NULL,NULL,NULL,2100,4000);
+
+insert into PAY_CHECK_2
+values(102,to_date('01-01-2021','DD-MM-YYYY'),5000,NULL,NULL,NULL,NULL,9000);
+
+insert into PAY_CHECK_2
+values(103,to_date('01-01-2021','DD-MM-YYYY'),7000,NULL,NULL,NULL,900,3000);
+
+# PERSONAL ENTRY
+insert into PAY_CHECK_2
+values(104,to_date('01-01-2021','DD-MM-YYYY'),7000,NULL,NULL,NULL,450,4000);

@@ -1,0 +1,40 @@
+3.1
+S1
+insert into SKILL_2
+values('S1','full stack');
+
+S2
+insert into SKILL_2
+values('S2','python');
+
+S3
+insert into SKILL_2
+values('S3','java');
+
+S4
+insert into SKILL_2
+values('S4','c++');
+
+S6
+insert into SKILL_2
+values('S6','oracle');
+
+S7
+insert into SKILL_2
+values('S7','android');
+
+S8
+insert into SKILL_2
+values('S8','azure');
+
+S9
+insert into SKILL_2
+values('S9','dot net');
+
+S10
+insert into SKILL_2
+values('S10','ios');
+
+S11 # personal entry
+insert into SKILL_2
+values('S11','ml');

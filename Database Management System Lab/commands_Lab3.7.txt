@@ -1,0 +1,18 @@
+insert into FAMILY_DEPENDENTS_2
+values(100,'AJITH','SON',12);
+
+insert into FAMILY_DEPENDENTS_2
+values(100,'PRITHVI','DAUGHTER',9);
+
+insert into FAMILY_DEPENDENTS_2
+values(101,'AARYA','DAUGHTER',17);
+
+insert into FAMILY_DEPENDENTS_2
+values(101,'AKANKSH','SON',11);
+
+insert into FAMILY_DEPENDENTS_2
+values(101,'ANITHA','SPOUSE',11);
+
+# PERSONAL ENTRY
+insert into FAMILY_DEPENDENTS_2
+values(100,'ABE','SPOUSE',45);

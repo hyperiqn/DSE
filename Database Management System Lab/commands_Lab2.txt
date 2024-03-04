@@ -1,0 +1,39 @@
+2.1
+alter table EMP_2
+add(REPORTS_TO numeric(3) constraint FK_REPORTS_TO_EMPCODE references EMP_2(EMPCODE));
+
+2.2
+alter table SKILL_2
+add(constraint S_START check(SKILLID like 'S%'));
+
+2.3
+alter table EMP_SKILL_2
+add constraint PK_EMPNO_SKILLID Primary Key(EMPNO, SKILLID);
+
+2.4
+alter table PRJ_DETAILS_2
+add constraint UNQ_PRJ_NAME Unique(PRJ_NAME);
+
+2.5
+alter table CLIENT_2
+add(EMAIL varchar2(20) constraint VALID_EMAIL check(EMAIL like '%@%.___'));
+
+2.6
+alter table EMP_2
+add constraint UNQ_PHONE Unique(PHONE);
+
+2.7
+alter table EMP_2
+add constraint UNQ_EMAIL Unique(EMAIL);
+
+2.8
+alter table MEDICAL_POLICY_2
+drop Primary Key;
+alter table MEDICAL_POLICY_2
+add constraint PK Primary Key(EMPNO, POLICYNO, POLICYDATE);
+
+2.9
+alter table MEDICAL_POLICY_2
+drop constraint NOT_ZERO;
+alter table MEDICAL_POLICY_2
+add constraint MIN check(PREMIUM>1000);

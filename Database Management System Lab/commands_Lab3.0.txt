@@ -1,0 +1,65 @@
+3.0
+103 # DUPLICATE OF 106
+insert into EMP_2
+values(103,'PRASAD','PHD',1000000003,'prasad@digisol.com','CEO',290000,NULL);
+
+110
+insert into EMP_2
+values(110,'BHASKAR','MTECH','1000000010','bhaskar@digisol.com','PROJECT DIRECTOR',250000,103);
+
+106 
+insert into EMP_2
+values(106,'RAJ','MSC','1000000006','raj@digisol.com','PROJECT LEADER',250000,110);
+
+102
+insert into EMP_2
+values(102,'VIJAY','BTECH','100000002','vijay@digisol.com','PROJECT MANAGER',200000,110);
+
+101
+insert into EMP_2
+values(101,'RAVI','MTECH','1000000001','ravi@digisol.com','PROJECT LEADER',200000,102);
+
+100
+insert into EMP_2
+values(100,'RAJESH','BTECH','1000000000','rajesh@digisol.com','DEVELOPER',100000,101);
+
+108
+insert into EMP_2
+values(108,'AJAY','BTECH','1000000008','ajay@digisol.com','TECHNICAL HEAD',100000,102);
+
+105
+insert into EMP_2
+values(105,'MANISH','MCA','1000000005','manish@digisol.com','DEVELOPER',100000,106);
+
+104 # DUPLICATE OF 102
+insert into EMP_2
+values(104,'RAKESH','BTECH','1000000004','rakesh@digisol.com','DEVELOPER',100000,101);
+
+107 # DUPLICATE OF 108
+insert into EMP_2
+values(107,'BOB','BTECH','1000000007','bob@digisol.com','DEVELOPER',100000,101);
+
+109
+insert into EMP_2
+values(109,'SAM','BTECH','1000000009','sam@digisol.com','DEVELOPER',100000,101);
+
+112 # DUPLICATE OF 110
+insert into EMP_2
+values(112,'TOM','BTECH','1000000012','tom@digisol.com','DEVELOPER',100000,101);
+
+111
+insert into EMP_2
+values(111,'RAJJ','BTECH','1000000011','rajj@digisol.com','DEVELOPER','100000',101);
+
+113 # personal entry
+insert into EMP_2
+values(113,'KING','BTECH','1000000013','king@digisol.com','DEVELOPER','100000',101);
+
+
+
+
+
+
+
+
+

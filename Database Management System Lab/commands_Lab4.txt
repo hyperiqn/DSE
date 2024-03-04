@@ -1,0 +1,300 @@
+4.1
+select * from CLIENT_2;
+C2  LTS        +91-78389397   bbb@lts.com
+C3  RK         +44-67838934   ccc@rk.com
+C4  MMA        +31-77839093   ddd@mma.com
+C5  AKS        +81-66822903   eee@aks.com
+C6  GKS        +48-75628982   fff@gks.com
+C7  B1         +91-64839839   ggg@bb.com
+C8  ABT        +31-67554667   hhh@abt.com
+C9  XYZ        +44-87114667   xyz@xyz.com
+C10 XXX        +31-87114668   xxx@xxx.com
+
+4.2
+select NAME,PHONE,EMAIL from EMP_2
+where DESIGNATION='DEVELOPER';
+RAJESH     1000000000 rajesh@digisol.com
+MANISH     1000000005 manish@digisol.com
+RAKESH     1000000004 rakesh@digisol.com
+BOB        1000000007 bob@digisol.com
+SAM        1000000009 sam@digisol.com
+TOM        1000000012 tom@digisol.com
+RAJJ       1000000011 rajj@digisol.com
+KING       1000000013 king@digisol.com
+
+4.3
+select NAME from EMP_2
+where REPORTS_TO=106;
+AJAY
+MANISH
+
+4.4
+select NAME,EMAIL from EMP_2
+where DESIGNATION='TECHNICAL HEAD' and QUALIFICATION='BTECH';
+AJAY       ajay@digisol.com
+
+4.5
+select NAME from EMP_2
+where SALARY>=100000 and SALARY<=200000;
+
+select NAME from EMP_2
+where SALARY between 100000 and 200000;
+
+VIJAY
+RAVI
+RAJESH
+AJAY
+MANISH
+RAKESH
+BOB
+SAM
+TOM
+RAJJ
+KING
+
+4.6
+select SKILLID from EMP_SKILL_2
+where EMPNO=101;
+S1
+S2
+S3
+
+4.7
+select SKILLNAME from SKILL_2
+natural join EMP_SKILL_2
+where EMPNO=101;
+full stack
+python
+java
+
+4.8
+select EMPCODE from WORK_EXP_2
+where (CLIENTID='C1' or CLIENTID='C2') and (RATING='A' or RATING='B');
+102
+105
+
+4.9
+select NAME from EMP_2
+natural join WORK_EXP_2
+where CLIENTID = 'C2' and RATING = 'B';
+VIJAY
+MANISH
+
+4.10
+select count(*)
+from FAMILY_DEPENDENTS_2
+where EMPNO = (select EMPCODE from EMP_2 where NAME='RAVI');
+3
+
+4.11
+select E.NAME,E.DESIGNATION,(E.SALARY * 12) as ANNUAL_SALARY
+from EMP_2 E;
+PRASAD     CEO                        3480000
+BHASKAR    PROJECT DIRECTOR           3000000
+RAJ        PROJECT LEADER             3000000
+VIJAY      PROJECT MANAGER            2400000
+RAVI       PROJECT LEADER             2400000
+RAJESH     DEVELOPER                  1212000
+AJAY       TECHNICAL HEAD             1200000
+MANISH     DEVELOPER                  1212000
+RAKESH     DEVELOPER                  1212000
+BOB        DEVELOPER                  1212000
+SAM        DEVELOPER                  1212000
+
+4.12
+select e.NAME,d.DEP_NAME
+from EMP_2 e inner join FAMILY_DEPENDENTS_2 d on e.EMPCODE=d.EMPNO;
+RAJESH     ABE
+RAJESH     AJITH
+RAJESH     PRITHVI
+RAVI       AARYA
+RAVI       AKANKSH
+RAVI       ANITHA
+
+4.13
+select e.NAME AS ProjectLeader, p.PRJ_NAME AS ProjectName
+from PRJ_DETAILS_2 p inner join EMP_2 e on p.LEAD_BY_EMPCODE = e.EMPCODE 
+where p.ACTUAL_END_DATE <= p.END_DATE and p.ACTUAL_BUDGET <= p.BUDGET_ALLOCATED;
+VIJAY      SPYDER
+BHASKAR    MARS
+VIJAY      SATURN
+VIJAY      EARTH
+
+4.14
+select e.NAME,e.SALARY,p.EMPCODE,p.REGULAR_INCREMENT,p.OTHER_INCENTIVES,p.ADVANCE_TAX
+from EMP_2 e inner join PAY_CHECK_2 p on e.EMPCODE = p.EMPCODE
+where p.PAY_DATE between '01-MAR-21' and '31-MAR-21';
+no rows selected
+
+4.15
+select e.NAME,e2.NAME,e2.PHONE
+from EMP_2 e inner join EMP_2 e2 on e.REPORTS_TO = e2.EMPCODE;
+NAME       NAME            PHONE
+---------- ---------- ----------
+SAM        RAVI       1000000001
+RAJJ       RAVI       1000000001
+TOM        RAVI       1000000001
+RAJESH     RAVI       1000000001
+RAKESH     RAVI       1000000001
+BOB        RAVI       1000000001
+KING       RAVI       1000000001
+RAVI       VIJAY       100000002
+BHASKAR    PRASAD     1000000003
+AJAY       RAJ        1000000006
+MANISH     RAJ        1000000006
+RAJ        BHASKAR    1000000010
+VIJAY      BHASKAR    1000000010
+
+4.16
+select * from PRJ_DETAILS_2 order by ACTUAL_END_DATE desc;
+
+
+P3  UNICORN    03-SEP-21 10-OCT-23 10-OCT-23             106          7500000
+      8000000
+
+P1  SPYDER     10-JAN-20 11-OCT-22 11-OCT-22             102          2000000
+      1990000
+
+P7  SATURN     10-JAN-20 11-OCT-22 11-OCT-22             102          5000000
+      4990000
+
+P8  EARTH      10-JAN-20 11-OCT-22 11-OCT-22             102          2000000
+      1990000
+
+P4  ZEUS       28-FEB-20 09-JUN-21 10-JAN-22             110          5500000
+      5000000
+
+P2  APOLLO     01-JAN-19 10-JUL-21 30-DEC-21             108          3000000
+      3600000
+
+P5  JUPITOR    07-AUG-18 14-FEB-20 01-NOV-20             110          9000000
+      9000000
+
+P6  MARS       21-FEB-20 07-AUG-20 07-AUG-20             110          2000000
+      1990000
+
+
+4.17
+select e.NAME,s.SKILLNAME
+from EMP_2 e inner join EMP_SKILL_2 es on e.EMPCODE=es.EMPNO inner join SKILL_2 s on es.SKILLID=s.SKILLID
+order by e.EMPCODE asc, es.SKILL_EXPERIENCE desc;
+RAJESH     full stack
+RAJESH     java
+RAVI       python
+RAVI       full stack
+RAVI       java
+VIJAY      c++
+MANISH     android
+MANISH     ios
+RAJ        oracle
+RAJ        python
+RAJ        azure
+AJAY       oracle
+AJAY       ml
+AJAY       dot net
+BHASKAR    oracle
+BHASKAR    full stack
+
+4.18
+select e.NAME,d.DEP_NAME,d.AGE
+from EMP_2 e inner join FAMILY_DEPENDENTS_2 d on e.EMPCODE=d.EMPNO
+where d.RELATIONSHIP='SON'
+order by e.NAME asc,d.AGE desc;
+RAJESH     AJITH                        12
+RAVI       AKANKSH                      11
+
+4.19
+select e.NAME,p.PRJ_NAME
+from EMP_2 e inner join WORK_EXP_2 we on e.EMPCODE=we.EMPCODE
+inner join PRJ_DETAILS_2 p on we.PRJID=p.PRJID
+order by e.NAME asc, p.PRJ_NAME desc;
+AJAY       APOLLO
+BHASKAR    ZEUS
+BHASKAR    JUPITOR
+MANISH     JUPITOR
+MANISH     APOLLO
+RAJ        ZEUS
+RAJ        UNICORN
+RAJESH     UNICORN
+RAJESH     SPYDER
+RAJJ       JUPITOR
+RAJJ       APOLLO
+RAVI       SPYDER
+VIJAY      SPYDER
+VIJAY      APOLLO
+
+4.20
+select e.NAME
+from EMP_2 e inner join WORK_EXP_2 w on e.EMPCODE = w.EMPCODE inner join PRJ_DETAILS_2 p on w.PRJID = p.PRJID
+where p.PRJ_NAME = 'SPYDER'
+union 
+select e.NAME
+from EMP_2 e inner join WORK_EXP_2 w on e.EMPCODE = w.EMPCODE inner join PRJ_DETAILS_2 p on w.PRJID = p.PRJID
+where p.PRJ_NAME = 'APOLLO';
+AJAY
+MANISH
+RAJESH
+RAJJ
+RAVI
+VIJAY
+
+4.21
+select e.NAME
+from EMP_2 e inner join EMP_SKILL_2 es on e.EMPCODE=es.EMPNO inner join SKILL_2 s on es.SKILLID=s.SKILLID
+where s.SKILLNAME='oracle'
+intersect
+select e.NAME
+from EMP_2 e inner join EMP_SKILL_2 es on e.EMPCODE=es.EMPNO inner join SKILL_2 s on es.SKILLID=s.SKILLID
+where s.SKILLNAME='azure';
+RAJ
+
+4.22
+select NAME from EMP_2
+where EMPCODE not in(select EMPCODE from WORK_EXP_2 where PRJID=(select PRJID from PRJ_DETAILS_2 where PRJ_NAME='JUPITOR'));
+RAJESH
+RAVI
+VIJAY
+PRASAD
+RAKESH
+RAJ
+BOB
+AJAY
+SAM
+TOM
+KING
+
+4.23
+select NAME
+from EMP_2
+where REPORTS_TO is NULL;
+PRASAD
+
+4.24
+select NAME,EMAIL
+from EMP_2 
+where NAME like 'RA%';
+RAJ        raj@digisol.com
+RAVI       ravi@digisol.com
+RAJESH     rajesh@digisol.com
+RAKESH     rakesh@digisol.com
+RAJJ       rajj@digisol.com
+
+4.25
+select PRJ_NAME
+from PRJ_DETAILS_2
+where START_DATE between '01-JAN-2020' and '14-DEC-2020';
+SPYDER
+ZEUS
+MARS
+SATURN
+EARTH
+
+4.26
+select e.NAME
+from EMP_2 e inner join EMP_SKILL_2 es on e.EMPCODE=es.EMPNO
+where es.SKILLID in(select SKILLID from EMP_SKILL_2 where EMPNO=101)
+group by e.EMPCODE, e.NAME;
+RAJESH
+RAVI
+RAJ
+BHASKAR

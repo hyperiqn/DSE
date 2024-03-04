@@ -1,0 +1,64 @@
+3.3
+100 S1
+insert into EMP_SKILL_2
+values(100,'S1',15);
+
+100 S3
+insert into EMP_SKILL_2
+values(100,'S3',10);
+
+101 S1
+insert into EMP_SKILL_2
+values(101,'S1',6);
+
+101 S2
+insert into EMP_SKILL_2
+values(101,'S2',10);
+
+102 S4
+insert into EMP_SKILL_2
+values(102,'S4',18);
+
+110 S1
+insert into EMP_SKILL_2
+values(110,'S1',14);
+
+110 S6
+insert into EMP_SKILL_2
+values(110,'S6',20);
+
+106 S2
+insert into EMP_SKILL_2
+values(106,'S2',10);
+
+106 S6
+insert into EMP_SKILL_2
+values(106,'S6',12);
+
+106 S8
+insert into EMP_SKILL_2
+values(106,'S8',10);
+
+108 S9
+insert into EMP_SKILL_2
+values(108,'S9',5);
+
+108 S6
+insert into EMP_SKILL_2
+values(108,'S6',18);
+
+105 S7
+insert into EMP_SKILL_2
+values(105,'S7',12);
+
+105 S10
+insert into EMP_SKILL_2
+values(105,'S10',11);
+
+101 S3 # DUPLICATE OF 101 S2
+insert into EMP_SKILL_2
+values(101,'S3',4);
+
+108 S11 # personal entry
+insert into EMP_SKILL_2
+values(108,'S11',12);

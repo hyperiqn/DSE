@@ -1,0 +1,220 @@
+5.1
+select NAME from EMP_2
+where DESIGNATION=(select DESIGNATION from EMP_2 where EMPCODE=100);
+RAJESH
+MANISH
+RAKESH
+BOB
+SAM
+TOM
+RAJJ
+KING
+
+5.2
+select NAME from EMP_2
+where REPORTS_TO=(select EMPCODE from EMP_2 where NAME='VIJAY');
+RAVI
+
+5.3
+select e.NAME, e.DESIGNATION, e.EMAIL from EMP_2 e
+where e.EMPCODE in (select w.EMPCODE from WORK_EXP_2 w
+where w.PRJID in (select w.PRJID from WORK_EXP_2 w where
+w.EMPCODE in ((select e.EMPCODE from EMP_2 e where e.NAME='VIJAY'))));
+RAJESH     DEVELOPER            rajesh@digisol.com
+RAVI       PROJECT LEADER       ravi@digisol.com
+VIJAY      PROJECT MANAGER      vijay@digisol.com
+MANISH     DEVELOPER            manish@digisol.com
+AJAY       TECHNICAL HEAD       ajay@digisol.com
+RAJJ       DEVELOPER            rajj@digisol.com
+
+5.4
+select e.NAME
+from EMP_2 e inner join FAMILY_DEPENDENTS_2 f on e.EMPCODE=f.EMPNO
+where e.EMPCODE in (select f.EMPNO from FAMILY_DEPENDENTS_2 where f.RELATIONSHIP='DAUGHTER');
+RAJESH
+RAVI
+
+5.5
+select NAME from EMP_2
+where EMPCODE not in (select EMPCODE from WORK_EXP_2
+where PRJID=(select PRJID from PRJ_DETAILS_2
+where PRJ_NAME='SPYDER'));
+PRASAD
+RAKESH
+MANISH
+RAJ
+BOB
+AJAY
+SAM
+BHASKAR
+RAJJ
+TOM
+KING
+
+5.6
+select NAME from EMP_2
+where EMPCODE in (select EMPNO from EMP_SKILL_2
+where SKILLID in (select SKILLID from EMP_SKILL_2 where EMPNO in (
+select EMPCODE from WORK_EXP_2 where PRJID='P1')));
+RAJESH
+RAVI
+VIJAY
+RAJ
+BHASKAR
+
+5.7
+select NAME
+from EMP_2 natural join WORK_EXP_2
+where PRJID = 'P1'
+and WORK_EXPERIENCE > SOME(
+select WORK_EXPERIENCE
+from WORK_EXP_2
+where PRJID = 'P2'
+);
+RAJESH
+VIJAY
+RAVI
+
+5.8
+select e.NAME 
+from EMP_2 e inner join WORK_EXP_2 w on e.EMPCODE=w.EMPCODE
+where w.PRJID in (select PRJID from WORK_EXP_2 where EMPCODE=100)
+and CLIENTID in (select CLIENTID from WORK_EXP_2 where EMPCODE=100);
+RAJESH
+RAJ
+
+5.9
+select distinct e.NAME
+from EMP_2 e inner join WORK_EXP_2 w on e.EMPCODE=w.EMPCODE
+where w.PRJID not in (select PRJID from WORK_EXP_2 where EMPCODE=106);
+BHASKAR
+RAVI
+AJAY
+MANISH
+VIJAY
+RAJJ
+RAJESH
+
+5.10
+select distinct p.PRJ_NAME
+from PRJ_DETAILS_2 p inner join WORK_EXP_2 w on p.PRJID=w.PRJID
+inner join EMP_2 e on w.EMPCODE=e.EMPCODE
+where p.BUDGET_ALLOCATED > (select sum(SALARY) from EMP_2 where e.EMPCODE=w.EMPCODE);
+APOLLO
+ZEUS
+UNICORN
+JUPITOR
+
+5.11
+select p.PRJ_NAME,count(distinct w.EMPCODE)
+from PRJ_DETAILS_2 p inner join WORK_EXP_2 w on p.PRJID=w.PRJID
+where RATING in ('A','B')
+group by p.PRJ_NAME
+order by count(distinct w.EMPCODE) desc;
+APOLLO                            3
+SPYDER                            3
+JUPITOR                           1
+ZEUS                              1
+UNICORN                           1
+
+5.12
+select p.PRJ_NAME
+from PRJ_DETAILS_2 p inner join WORK_EXP_2 w on p.PRJID=w.PRJID
+group by p.PRJ_NAME
+having count(distinct w.EMPCODE)>2;
+APOLLO
+JUPITOR
+SPYDER
+
+5.13
+select e.NAME,count(d.DEP_NAME)
+from EMP_2 e inner join FAMILY_DEPENDENTS_2 d on e.EMPCODE=d.EMPNO
+group by e.NAME;
+RAVI                       3
+RAJESH                     3
+
+5.14
+select to_char(POLICYDATE, 'YYYY'),sum(PREMIUM)
+from MEDICAL_POLICY_2
+group by to_char(POLICYDATE, 'YYYY');
+2020        22000
+2021        41000
+
+5.15
+with ESE as (
+select EMPNO,sum(SKILL_EXPERIENCE) as TE
+from EMP_SKILL_2
+group by EMPNO
+)
+select e.NAME
+from EMP_2 e inner join ESE es on e.EMPCODE=es.EMPNO
+where es.TE > 20;
+RAJESH
+MANISH
+RAJ
+AJAY
+BHASKAR
+
+5.16
+create table EMP_PRJ as
+select E.NAME AS Emp_Name, P.BUDGET_ALLOCATED AS Budget, P.PRJ_NAME AS Project_Name
+FROM EMP_2 e inner join WORK_EXP_2 w on e.empcode = w.empcode
+inner join PRJ_DETAILS_2 p ON w.prjid = p.prjid
+where e.EMPCODE = 110;
+Table created.
+
+5.17
+update EMP_2
+set SALARY=case
+when DESIGNATION='PROJECT LEADER' then SALARY*1.1
+when DESIGNATION='DEVELOPER' then SALARY*1.05
+else SALARY
+end;
+14 rows updated.
+
+5.18
+create view EMP_SKILL_EXPERIENCE as
+select e.NAME, s.SKILLNAME, es.SKILL_EXPERIENCE
+from EMP_2 e
+inner join EMP_SKILL_2 es on e.EMPCODE = es.EMPNO
+inner join SKILL_2 s ON es.SKILLID = s.SKILLID
+where es.SKILL_EXPERIENCE > 20;
+View created.
+
+update EMP_SKILL_2
+set SKILL_EXPERIENCE = 25
+where EMPNO = 102 and SKILLID = 'S4';
+1 row updated.
+
+5.19
+create view EMP_DESIGNATION as
+select EMPCODE, NAME, SALARY
+from EMP_2
+where DESIGNATION in ('DEVELOPER', 'PROJECT LEADER');
+View created.
+
+update EMP_2
+set SALARY = SALARY * 1.1
+where EMPCODE = 101;
+1 row updated.
+
+5.20
+select NAME, 
+    (select COUNT(*) 
+     from PRJ_DETAILS_2
+     where EMPCODE = EMP_2.EMPCODE)
+from EMP_2;
+PRASAD                                                               8
+BHASKAR                                                              8
+RAJ                                                                  8
+VIJAY                                                                8
+RAVI                                                                 8
+RAJESH                                                               8
+AJAY                                                                 8
+MANISH                                                               8
+RAKESH                                                               8
+BOB                                                                  8
+SAM                                                                  8
+TOM                                                                  8
+RAJJ                                                                 8
+KING                                                                 8

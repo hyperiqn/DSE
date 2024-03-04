@@ -1,0 +1,19 @@
+insert into MEDICAL_POLICY_2
+values(100,'MED001',10000,to_date('10-12-2020','DD-MM-YYYY'));
+
+insert into MEDICAL_POLICY_2
+values(101,'MED003',12000,to_date('15-12-2020','DD-MM-YYYY'));
+
+# PRIMARY KEY VIOLATED
+insert into MEDICAL_POLICY_2
+values(100,'MED002',10000,to_date('10-01-2021','DD-MM-YYYY'));
+
+insert into MEDICAL_POLICY_2
+values(101,'MED003',12000,to_date('15-01-2021','DD-MM-YYYY'));
+
+insert into MEDICAL_POLICY_2
+values(103,'MED004',9000,to_date('21-01-2021','DD-MM-YYYY'));
+
+# PERSONAL ENTRY
+insert into MEDICAL_POLICY_2
+values(103,'MED005',10000,to_date('21-01-2021','DD-MM-YYYY'));

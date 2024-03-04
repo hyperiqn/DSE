@@ -1,0 +1,40 @@
+3.2
+C1
+insert into CLIENT_2
+values('C1','ABC','+48-87489389','aaa@abc.com');
+
+C2
+insert into CLIENT_2
+values('C2','LTS','+91-78389397','bbb@lts.com');
+
+C3
+insert into CLIENT_2
+values('C3','RK','+44-67838934','ccc@rk.com');
+
+C4
+insert into CLIENT_2
+values('C4','MMA','+31-77839093','ddd@mma.com');
+
+C5
+insert into CLIENT_2
+values('C5','AKS','+81-66822903','eee@aks.com');
+
+C6
+insert into CLIENT_2
+values('C6','GKS','+48-75628982','fff@gks.com');
+
+C7
+insert into CLIENT_2
+values('C7','BB','+91-64839839','ggg@bb.com');
+
+C8
+insert into CLIENT_2
+values('C8','ABT','+31-67554667','hhh@abt.com');
+
+C9
+insert into CLIENT_2
+values('C9','XYZ','+44-87114667','xyz@xyz.com');
+
+C10 # personal entry
+insert into CLIENT_2
+values('C10','XXX','+31-87114668','xxx@xxx.com');

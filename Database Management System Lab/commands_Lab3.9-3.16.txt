@@ -1,0 +1,34 @@
+3.9
+commit;
+cannot delete empcode=100 because child records are present
+
+3.10
+cannot update email as it violates email constraint
+
+3.11
+cannot update work_exp as it violates primary key constraint(P9 not found)
+
+3.12
+commit;
+delete from CLIENT_2
+where CLIENTID = 'C1';
+
+3.13
+commit;
+delete from FAMILY_DEPENDENTS_2
+where EMPNO = 100;
+rollback;
+
+3.14
+update EMP_2
+set SALARY=SALARY*1.01
+where DESIGNATION='DEVELOPER';
+
+3.15
+update EMP_2
+set REPORTS_TO=106
+where EMPCODE=108;
+
+3.16
+cannot update who 108 reports to because 117 is not found
+commit;

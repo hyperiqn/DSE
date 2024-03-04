@@ -1,0 +1,76 @@
+1
+create table EMP_2(
+EMPCODE numeric(3) constraint PK_EMPNO Primary Key,
+NAME varchar2(10),
+QUALIFICATION varchar2(7) constraint VALID_QUALIF check(QUALIFICATION in ('BTECH', 'MTECH', 'MSC', 'MCA', 'PHD')),
+PHONE numeric(10),
+EMAIL varchar2(20) constraint EMAIL_DOMAIN check(EMAIL like ('%@digisol.com')),
+DESIGNATION varchar2(20) constraint VALID_DESIGNATION check(DESIGNATION in ('DEVELOPER', 'PROJECT LEADER', 'PROJECT MANAGER', 'TECHNICAL HEAD', 'PROJECT DIRECTOR', 'CEO')),
+SALARY numeric(7) constraint SALARY_RANGE check(SALARY>=97000 and SALARY<=300000));
+
+2
+create table SKILL_2(
+SKILLID char(3) constraint UNQ_SKILLID Unique,
+SKILLNAME varchar(20) constraint UNQ_SKILLNAME Unique);
+
+3
+create table EMP_SKILL_2(
+EMPNO numeric(3) constraint FK_EMPNO references EMP_2,
+SKILLID char(3) constraint FK_SKILLID references SKILL_2(SKILLID) on delete cascade,
+SKILL_EXPERIENCE numeric(3) constraint zero check(SKILL_EXPERIENCE>0));
+
+4
+create table PRJ_DETAILS_2(
+PRJID char(3) constraint PK_PRJID Primary Key check(PRJID like 'P%'),
+PRJ_NAME varchar2(10),
+START_DATE date,
+END_DATE date,
+ACTUAL_END_DATE date,
+LEAD_BY_EMPCODE numeric(3) constraint FK_LEAD_EMP references EMP_2,
+BUDGET_ALLOCATED numeric(10,1),
+ACTUAL_BUDGET numeric(10,1),
+constraint END_DATE_GARTER_START_DATE check(END_DATE>START_DATE),
+constraint ACTUAL_END_ERROR check(ACTUAL_END_DATE>=END_DATE));
+
+5
+create table CLIENT_2(
+CLIENTID char(3) constraint PK_CLIENTID Primary Key constraint STARTSWITH_C check(CLIENTID like 'C%'),
+NAME varchar2(10),
+PHONE char(14) constraint PHONE_FORMAT check(PHONE like '+91-%' or PHONE like '+81-%' or PHONE like '+31-%' or PHONE like '+48-%' or PHONE like '+44-%'));
+
+6
+create table WORK_EXP_2(
+EMPCODE numeric(3) references EMP_2,
+PRJID char(3) references PRJ_DETAILS_2,
+WORK_EXPERIENCE numeric(3) constraint NULL_WORK check(WORK_EXPERIENCE>=0) NOT NULL,
+CLIENTID char(3) constraint VALID_CLIENT references CLIENT_2 on delete set null,
+RATING char(1) constraint VALID_RATING check(RATING in ('A','B','C')),
+constraint PK_EMP_PRJ Primary Key (EMPCODE, PRJID));
+
+7
+create table FAMILY_DEPENDENTS_2(
+EMPNO numeric(3) references EMP_2,
+DEP_NAME varchar(20),
+RELATIONSHIP varchar(16),
+AGE numeric(3) constraint VALID_AGE check(AGE>=1 and AGE<=130),
+constraint PK_EMPDEP Primary Key (EMPNO, DEP_NAME));
+
+8
+create table MEDICAL_POLICY_2(
+EMPNO numeric(3) references EMP_2,
+POLICYNO varchar2(6) constraint MEDSTART check(POLICYNO like 'MED%'),
+PREMIUM numeric(5) constraint NOT_ZERO check(PREMIUM>0),
+POLICYDATE date,
+constraint PK_EMPPOL Primary Key (EMPNO, POLICYNO));
+
+9
+create table PAY_CHECK_2(
+EMPCODE numeric(3) references EMP_2,
+PAY_DATE date,
+REGULAR_INCREMENT numeric(4) check(REGULAR_INCREMENT in (2000,3000,5000,7000,9000)),
+PERFORMANCE_INCENTIVE numeric(5),
+DA numeric(7),
+PF numeric(6),
+OTHER_INCENTIVES numeric(4),
+ADVANCE_TAX numeric(5),
+constraint PK_EMPPAY Primary Key (EMPCODE, PAY_DATE));
