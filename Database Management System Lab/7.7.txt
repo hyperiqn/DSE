@@ -1,0 +1,11 @@
+Name: RAJESH
+Basic Salary: 101000
+Regular Increment: 3000
+Increased Basic Salary: 104000
+Performance Incentive:
+DA: 52000
+PF: 12480
+Other Incentives: 450
+Advance Tax Paid: 4000
+Monthly Gross Salary:
+Monthly Take Home Salary:

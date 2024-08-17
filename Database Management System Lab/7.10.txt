@@ -1,0 +1,19 @@
+Name: PRASAD
+Designation: CEO
+Email: prasad.ceo@digisoul.com
+-----------------------X---------------------------
+Name: BHASKAR
+Designation: PROJECT DIRECTOR
+Email: bhaskar.project director@digisoul.com
+-----------------------X---------------------------
+Name: RAJ
+Designation: PROJECT LEADER
+Email: raj.project leader@digisoul.com
+-----------------------X---------------------------
+Name: VIJAY
+Designation: PROJECT MANAGER
+Email: vijay.project manager@digisoul.com
+-----------------------X---------------------------
+Name: RAVI
+Designation: PROJECT LEADER
+Email: ravi.project leader@digisoul.com

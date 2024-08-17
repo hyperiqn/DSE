@@ -1,0 +1,10 @@
+Enter value for employeecode: 100
+old   2:   employeeCode EMP_2.EMPCODE%TYPE:= &employeeCode;
+new   2:   employeeCode EMP_2.EMPCODE%TYPE:= 100;
+100
+RAJESH
+BTECH
+1000000000
+rajesh@digisol.com
+DEVELOPER
+101000

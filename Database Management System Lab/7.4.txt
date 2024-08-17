@@ -1,0 +1,7 @@
+Enter value for enter_sentence: 'hello world'
+old   3:     sentence VARCHAR2(100) := &Enter_Sentence;
+new   3:     sentence VARCHAR2(100) := 'hello world';
+Vowels: 3
+Consonants: 7
+Numbers: 0
+Special characters: 1

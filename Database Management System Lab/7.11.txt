@@ -1,0 +1,9 @@
+Enter value for account_number: 3
+old  10:  v_account_number := &account_number;
+new  10:  v_account_number := 3;
+Enter value for withdrawal_amount: 500
+old  11:  v_withdrawal_amount := &withdrawal_amount;
+new  11:  v_withdrawal_amount := 500;
+Current Balance: 4000
+Withdrawal of 500 is Successful
+Updated Current Balance: 3500

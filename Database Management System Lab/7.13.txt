@@ -1,0 +1,8 @@
+Enter value for enter_rating: 'B'
+old   3:  p_rating WORK_EXP_2.RATING%TYPE := &Enter_Rating;
+new   3:  p_rating WORK_EXP_2.RATING%TYPE := 'B';
+Enter value for enter_cliendid: 'C2'
+old   4:  p_client CLIENT_2.CLIENTID%TYPE := &Enter_CliendID;
+new   4:  p_client CLIENT_2.CLIENTID%TYPE := 'C2';
+Emp Code: 102 | Name: VIJAY | Designation: PROJECT MANAGER
+Emp Code: 105 | Name: MANISH | Designation: DEVELOPER

@@ -1,0 +1,7 @@
+Employee Number: 102
+Employee Name: VIJAY
+Salary: 200000
+Project Name: APOLLO
+Rating: B
+Incentive: 5000
+Total Salary: 205000

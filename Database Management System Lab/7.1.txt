@@ -1,0 +1,4 @@
+Enter value for num: 123
+old   2: num number:= &num;
+new   2: num number:= 123;
+Reverse of the number is : 321

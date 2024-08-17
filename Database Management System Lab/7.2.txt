@@ -1,0 +1,4 @@
+Enter value for enter_word: 'racecar'
+old   6:     word := &Enter_Word;
+new   6:     word := 'racecar';
+racecar is a Palindrome
